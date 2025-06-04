@@ -1,3 +1,4 @@
+
 class Solution {
     public void pattern12(int n) {
         int blank=2*(n-1);
