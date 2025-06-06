@@ -1,0 +1,3 @@
+====== Strings =====
+java: str.charAt(i)
+c#: str[i]
