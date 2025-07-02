@@ -1,0 +1,174 @@
+class Solution {
+    public int[] selectionSort(int[] nums) {
+        // Loop through unsorted part of the array (0 to n-2)
+        for (int i = 0; i < nums.length - 1; i++) {
+            /*Assume current element 
+            is the minimum*/
+            int minIndex = i;
+
+            // Find actual minimum in unsorted part (i+1 to n-1)
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] < nums[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // Swap only if minIndex changed
+            if (minIndex != i) {
+                int temp = nums[i];
+                nums[i] = nums[minIndex];
+                nums[minIndex] = temp;
+            }
+        }
+
+        return nums;
+    }
+}
+
+class Solution {
+    // Function to merge two sorted halves of the array
+    public void merge(int[] arr, int low, int mid, int high) {
+        // Temporary array to store merged elements
+        List<Integer> temp = new ArrayList<>();
+        int left = low;
+        int right = mid + 1;
+
+        // Loop until subarrays are exhausted
+        while (left <= mid && right <= high) {
+            // Compare left and right elements
+            if (arr[left] <= arr[right]) {
+                // Add left element to temp
+                temp.add(arr[left]);
+                // Move left pointer
+                left++;
+            } else {
+                // Add right element to temp
+                temp.add(arr[right]);
+                // Move right pointer
+                right++;
+            }
+        }
+
+        // Adding the remaining elements of left half
+        while (left <= mid) {
+            temp.add(arr[left]);
+            left++;
+        }
+
+        // Adding the remaining elements of right half
+        while (right <= high) {
+            temp.add(arr[right]);
+            right++;
+        }
+
+        // Transferring the sorted elements to arr
+        for (int i = low; i <= high; i++) {
+            arr[i] = temp.get(i - low);
+        }
+    }
+
+    // Helper function to perform merge sort from low to high
+    public void mergeSortHelper(int[] arr, int low, int high) {
+        // Base case: if the array has only one element
+        if (low >= high)
+            return;
+
+        // Find the middle index
+        int mid = (low + high) / 2;
+        // Recursively sort the left half
+        mergeSortHelper(arr, low, mid);
+        // Recursively sort the right half
+        mergeSortHelper(arr, mid + 1, high);
+        // Merge the sorted halves
+        merge(arr, low, mid, high);
+    }
+
+    // Function to perform merge sort on the given array
+    public int[] mergeSort(int[] nums) {
+        int n = nums.length; // Size of array
+        
+        // Perform Merge sort on the whole array
+        mergeSortHelper(nums, 0, n - 1);
+        
+        // Return the sorted array
+        return nums;
+    }
+}
+
+class Solution {
+    public int[] insertionSort(int[] nums) {
+        int n = nums.length; // Size of the array 
+        
+        // For every element in the array 
+        for (int i = 1; i < n; i++) {
+            int key = nums[i]; // Current element as key 
+            int j = i - 1;
+            
+            // Shift elements that are greater than key by one position
+            while (j >= 0 && nums[j] > key) {
+                nums[j + 1] = nums[j];
+                j--;
+            }
+            
+            nums[j + 1] = key; // Insert key at correct position
+        }
+        
+        return nums;
+    }
+}
+
+class Solution {
+// Bubble Sort Function
+    public int[] bubbleSort(int[] nums) {
+        int n = nums.length;
+        // Traverse through the array
+        for (int i = n - 1; i >= 0; i--) {
+            // Track if swaps are made
+            boolean isSwapped = false;
+            for (int j = 0; j <= i - 1; j++) {
+                // Swap if next element is smaller
+                if (nums[j] > nums[j + 1]) {
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                    isSwapped = true;
+                }
+            }
+            /** Break out of loop 
+          if no swaps done*/
+            if (!isSwapped) {
+                break;
+            }
+        }
+        return nums;
+    }
+}
+
+class Solution {
+// Bubble Sort Function
+    public int[] bubbleSort(int[] nums) {
+        int n = nums.length;
+        // Traverse through the array
+        for (int i = n - 1; i >= 0; i--) {
+            // Track if swaps are made
+            boolean isSwapped = false;
+            for (int j = 0; j <= i - 1; j++) {
+                // Swap if next element is smaller
+                if (nums[j] > nums[j + 1]) {
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                    isSwapped = true;
+                }
+            }
+            /** Break out of loop 
+          if no swaps done*/
+            if (!isSwapped) {
+                break;
+            }
+        }
+        return nums;
+    }
+}
+
+
